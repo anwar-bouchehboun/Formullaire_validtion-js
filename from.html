@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sytle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <form id="myform" onsubmit="">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required placeholder="Example@gmail.com">
+        <div><span id="sp-email"></span></div>
+
+        <label for="Phone">Phone</label>
+        <input type="text" id="Phone" name="Phone" required placeholder="+212XXXXXX">
+        <div><span id="sp-Phone"></span></div>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+        <div><span id="sp-date"></span></div>
+
+        <label for="msg">Message</label>
+        <input type="text" id="msg" name="msg" placeholder="Public message......." required>
+        <div><span id="sp-msg"></span></div>
+    </form>
+    <button type="button" onclick="affiche(event);">Affiche</button>
+     <!-- <input type="button" value="Affiche" onclick="affiche();"> -->
+        <div id="aff"></div>
+    </div>
+    <script src="js.js"></script>
+</body>
+</html>
