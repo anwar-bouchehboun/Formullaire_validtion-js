@@ -54,7 +54,7 @@ function affiche(event) {
   }
 
   // Message validation
-  var regexMsg = /^[A-Za-z]+$/;
+  var regexMsg = /^[A-Za-z\s]+$/;
   if (msg == "") {
     affMsg.innerHTML = "Please fill in this field.";
     cop++;
@@ -75,8 +75,14 @@ function affiche(event) {
       date: date,
       message: msg,
     });
-    displayData();
-    document.getElementById("myform").reset();
+   
+   let local=JSON.stringify(dataArray);
+   localStorage.setItem("dataArray",local);
+  console.log(JSON.parse(localStorage.getItem("dataArray")));
+  // Refresh the page to display the stored data
+  location.reload();
+    // displayData();
+    // document.getElementById("myform").reset();
   }
 
   // Reset the form
@@ -87,8 +93,11 @@ function affiche(event) {
 var displayedDataDiv = document.getElementById("aff");
 
 function displayData() {
-  displayedDataDiv.innerHTML = ""; // Clear previous data display
+  displayedDataDiv.innerHTML = ""; // Clear data
+  let localData = localStorage.getItem("dataArray");
 
+  if (localData) {
+    dataArray = JSON.parse(localData);
   for (var i = 0; i < dataArray.length; i++) {
     var e = dataArray[i];
     var dataString =
@@ -96,7 +105,12 @@ function displayData() {
       "Phone: " + e.phone + "<br>" +
       "Date: " + e.date + "<br>" +
       "Message: " + e.message + "<br><br>";
-
-    displayedDataDiv.innerHTML += dataString;
+      displayedDataDiv.innerHTML += dataString;
+  
+    
   }
 }
+}
+window.onload = function() {
+  displayData(); // This is the correct function name to display the stored data.
+};
