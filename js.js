@@ -114,3 +114,8 @@ function displayData() {
 window.onload = function() {
   displayData(); // This is the correct function name to display the stored data.
 };
+function clearLocalStorage() {
+  localStorage.removeItem("dataArray");
+  dataArray = []; // Clear the dataArray in memory as well
+  displayData(); // Update the displayedDataDiv to clear the displayed data
+}
