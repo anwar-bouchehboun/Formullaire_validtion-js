@@ -135,7 +135,7 @@ function displayData() {
         "Date: " + e.date + "<br>" +
         "Message: " + e.message +
         // Add a button or link to remove the entry by index
-        `<br><a href="#" onclick="removeData(${i});">Remove</a><br><br>`;
+        `<br>  <button type="submit" onclick="removeData(${i});">Remove</button><br><br>`;
       displayedDataDiv.innerHTML += dataString;
     }
   }
