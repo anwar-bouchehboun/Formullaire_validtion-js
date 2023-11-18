@@ -119,3 +119,39 @@ function clearLocalStorage() {
   dataArray = []; // Clear the dataArray in memory as well
   displayData(); // Update the displayedDataDiv to clear the displayed data
 }
+
+
+function displayData() {
+  displayedDataDiv.innerHTML = ""; // Clear data
+  let localData = localStorage.getItem("dataArray");
+
+  if (localData) {
+    dataArray = JSON.parse(localData);
+    for (var i = 0; i < dataArray.length; i++) {
+      var e = dataArray[i];
+      var dataString =
+        "Email: " + e.email + "<br>" +
+        "Phone: " + e.phone + "<br>" +
+        "Date: " + e.date + "<br>" +
+        "Message: " + e.message +
+        // Add a button or link to remove the entry by index
+        `<br><a href="#" onclick="removeData(${i});">Remove</a><br><br>`;
+      displayedDataDiv.innerHTML += dataString;
+    }
+  }
+}
+
+function removeData(index) {
+  let localData = localStorage.getItem("dataArray");
+
+  if (localData) {
+    dataArray = JSON.parse(localData);
+
+    // Check if the index is within the valid range
+    if (index >= 0 && index < dataArray.length) {
+      dataArray.splice(index, 1); // Remove one element at the specified index
+      localStorage.setItem("dataArray", JSON.stringify(dataArray)); // Update local storage
+      displayData(); // Update the displayedDataDiv
+    } 
+  }
+}
